@@ -48,6 +48,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.examplekursproject.MainActivity
+import com.example.examplekursproject.RegisterActivity
 import com.example.examplekursproject.ui.theme.ExampleKursProjectTheme
 
 @Composable
@@ -74,6 +75,7 @@ fun LoginForm() {
                 submit = {
                     if (!checkCredentials(credentials, context)) credentials = Credentials()
                 },
+                label = "Password",
                 modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(10.dp))
@@ -95,6 +97,17 @@ fun LoginForm() {
             ) {
                 Text("Login")
             }
+            Button (
+                onClick = {
+                    context.startActivity(Intent(context, RegisterActivity::class.java))
+                    (context as Activity).finish()
+                },
+                shape = RoundedCornerShape(5.dp),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Register")
+            }
+
         }
     }
 }
@@ -181,7 +194,7 @@ fun PasswordField(
     onChange: (String) -> Unit,
     submit: () -> Unit,
     modifier: Modifier = Modifier,
-    label: String = "Password",
+    label: String,
     placeholder: String = "Enter your Password"
 ) {
 
