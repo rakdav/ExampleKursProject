@@ -50,6 +50,8 @@ import androidx.compose.ui.unit.dp
 import com.example.examplekursproject.MainActivity
 import com.example.examplekursproject.RegisterActivity
 import com.example.examplekursproject.ui.theme.ExampleKursProjectTheme
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 
 @Composable
 fun LoginForm() {
@@ -113,10 +115,23 @@ fun LoginForm() {
 }
 
 fun checkCredentials(creds: Credentials, context: Context): Boolean {
-    if (creds.isNotEmpty() && creds.login == "admin") {
-        context.startActivity(Intent(context, MainActivity::class.java))
-        (context as Activity).finish()
-        return true
+    if (creds.isNotEmpty()) {
+        var isTrue=false
+        val auth= Firebase.auth
+        auth.signInWithEmailAndPassword(creds.login,creds.pwd).
+            addOnCompleteListener{
+                task -> if(task.isSuccessful)
+                {
+                    context.startActivity(Intent(context, MainActivity::class.java))
+                    (context as Activity).finish()
+                    isTrue=true
+                }
+                else
+                {
+                    Toast.makeText(context, "No correct data", Toast.LENGTH_SHORT).show()
+                }
+        }
+        return isTrue
     } else {
         Toast.makeText(context, "Wrong Credentials", Toast.LENGTH_SHORT).show()
         return false
