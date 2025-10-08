@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.firebase.auth)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
