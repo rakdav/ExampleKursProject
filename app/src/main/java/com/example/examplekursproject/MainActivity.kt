@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -38,26 +39,29 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.examplekursproject.interfaces.Home
 import com.example.examplekursproject.ui.theme.ExampleKursProjectTheme
+import com.example.examplekursproject.viewmodels.HomeViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : ComponentActivity() {
+    private val viewModel: HomeViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         enableEdgeToEdge()
         setContent {
             ExampleKursProjectTheme {
-                Main()
+                Main(viewModel)
             }
         }
     }
 }
 
 @Composable
-fun Main(){
+fun Main(viewModel: HomeViewModel){
     val navController= rememberNavController()
     Column(Modifier.padding(top = 24.dp, bottom = 8.dp,)){
         NavHost(navController, startDestination = NavRoutes.Home.route, modifier = Modifier.weight(1f)){
-            composable(NavRoutes.Home.route){ Home() }
+            composable(NavRoutes.Home.route){ Home(viewModel) }
             composable(NavRoutes.Contacts.route){Contacts()}
             composable(NavRoutes.About.route){About()}
         }
