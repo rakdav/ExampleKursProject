@@ -125,6 +125,6 @@ sealed class NavRoutes(val route: String){
 @Composable
 fun GreetingPreview() {
     ExampleKursProjectTheme {
-        Main()
+    //    Main()
     }
 }
