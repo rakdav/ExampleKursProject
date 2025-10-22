@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "927816004409",
+    "project_id": "examplekursprojectdubinin",
+    "storage_bucket": "examplekursprojectdubinin.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:927816004409:android:b1928957194c9ae4e86ee8",
+        "android_client_info": {
+          "package_name": "com.example.examplekursproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVUCezSb9KE8m9EePPX-CPKM-ZTC8HyqM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
